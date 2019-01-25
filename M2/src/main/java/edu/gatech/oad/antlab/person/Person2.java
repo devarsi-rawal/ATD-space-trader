@@ -30,7 +30,7 @@ public class Person2 {
 	 * @return the modified string
 	 */
 	private String calc(String input) {
-	  char[] chars = text.toCharArray();
+	  char[] chars = input.toCharArray();
 	  for (int i = 0; i < chars.length; i++) {
 		int rand = (int)(Math.random() * chars.length);
 		char x = chars[i];
