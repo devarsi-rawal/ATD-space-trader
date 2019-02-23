@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ConfigurationActivity"
+    tools:showIn="@layout/activity_configuration">
+
+    <LinearLayout
+        android:layout_width="395dp"
+        android:layout_height="712dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/nameBox"
+            android:layout_width="361dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="75dp"
+            android:layout_marginEnd="8dp"
+            android:text="Player Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="307dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="57dp">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="Pilot"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/pilot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="number" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fighter"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/fighter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="number" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trader"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/trader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="number" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="94dp">
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Engineer"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/engineer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="number" />
+            </TableRow>
+
+        </TableLayout>
+
+        <Spinner
+            android:id="@+id/mode_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="52dp" />
+
+        <Button
+            android:id="@+id/newPlayerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="onSubmit"
+            android:text="OK" />
+
+        <TextView
+            android:id="@+id/errorBox"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
