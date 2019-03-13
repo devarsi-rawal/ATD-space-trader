@@ -1,4 +1,4 @@
-package atlantadragons.gatech.spacetrader;
+package atlantadragons.gatech.spacetrader.View;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +9,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.arch.lifecycle.ViewModelProviders;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+
+import atlantadragons.gatech.spacetrader.Model.GameMode;
+import atlantadragons.gatech.spacetrader.ViewModel.ConfigurationViewModel;
+import atlantadragons.gatech.spacetrader.Model.Player;
 
 
 public class ConfigurationActivity extends AppCompatActivity {
@@ -40,7 +46,11 @@ public class ConfigurationActivity extends AppCompatActivity {
         Button button = findViewById(R.id.newPlayerButton);
         errorBox = findViewById(R.id.errorBox);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Player.legalGameModes);
+        ArrayList<String> modeList = new ArrayList<>();
+        for (GameMode g : GameMode.values()) {
+            modeList.add(g.getMode());
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, modeList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         modeSpinner.setAdapter(adapter);
 
@@ -55,10 +65,10 @@ public class ConfigurationActivity extends AppCompatActivity {
         int fighter = Integer.parseInt(fighterField.getText().toString());
         int trader = Integer.parseInt(traderField.getText().toString());
         int engineer = Integer.parseInt(engineerField.getText().toString());
-        String mode = (String)modeSpinner.getSelectedItem();
 
-        Player character = new Player(name, pilot, fighter, trader, engineer, mode);
-        if (viewModel.setPlayer(character)) {
+
+        if (viewModel.setPlayer(name, pilot, fighter, trader, engineer)) {
+            viewModel.createUniverse();
             finish();
         } else {
             errorBox.setText("Error: Skill points must add up to exactly 16");
