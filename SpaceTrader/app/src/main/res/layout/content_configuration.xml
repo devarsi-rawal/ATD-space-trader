@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".View.ConfigurationActivity"
+    tools:context=".ConfigurationActivity"
     tools:showIn="@layout/activity_configuration">
 
     <LinearLayout

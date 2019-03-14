@@ -1,5 +1,6 @@
 package atlantadragons.gatech.spacetrader.View;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -46,11 +47,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         Button button = findViewById(R.id.newPlayerButton);
         errorBox = findViewById(R.id.errorBox);
 
-        ArrayList<String> modeList = new ArrayList<>();
-        for (GameMode g : GameMode.values()) {
-            modeList.add(g.getMode());
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, modeList);
+        ArrayAdapter<GameMode> adapter = new ArrayAdapter<GameMode>(this, android.R.layout.simple_spinner_item, GameMode.values());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         modeSpinner.setAdapter(adapter);
 
@@ -65,11 +62,11 @@ public class ConfigurationActivity extends AppCompatActivity {
         int fighter = Integer.parseInt(fighterField.getText().toString());
         int trader = Integer.parseInt(traderField.getText().toString());
         int engineer = Integer.parseInt(engineerField.getText().toString());
+        GameMode mode = (GameMode) modeSpinner.getSelectedItem();
 
 
-        if (viewModel.setPlayer(name, pilot, fighter, trader, engineer)) {
-            viewModel.createUniverse();
-            finish();
+        if (viewModel.setGame(name, pilot, fighter, trader, engineer, mode)) {
+            startActivity(new Intent(ConfigurationActivity.this, PlanetActivity.class));
         } else {
             errorBox.setText("Error: Skill points must add up to exactly 16");
         }

@@ -6,16 +6,17 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import atlantadragons.gatech.spacetrader.Model.Game;
+import atlantadragons.gatech.spacetrader.Model.GameMode;
 import atlantadragons.gatech.spacetrader.Model.Player;
 
 public class ConfigurationViewModel extends AndroidViewModel {
     Player player;
-
+    Game game;
     public ConfigurationViewModel(@NonNull Application application) {
         super(application);
     }
 
-    public boolean setPlayer(String name, int engineer, int fighter, int pilot, int trader) {
+    public boolean setGame(String name, int engineer, int fighter, int pilot, int trader, GameMode mode) {
         //check if input is good
         int total = engineer + fighter + pilot + trader;
 
@@ -23,16 +24,13 @@ public class ConfigurationViewModel extends AndroidViewModel {
         //else return false
         if (total == 16) {
             this.player = new Player(name, engineer, fighter, pilot, trader);
+            game = new Game (mode, player);
             Log.d("APP", "New Player created: " + player.toString());
+            largeLog("APP", game.toString());
             return true;
         }
 
         return false;
-    }
-
-    public void createUniverse() {
-        Game.createUniverse();
-        largeLog("Universe Created: ", Game.universe.toString());
     }
 
 
@@ -48,4 +46,5 @@ public class ConfigurationViewModel extends AndroidViewModel {
     public Player getPlayer() {
         return player;
     }
+    public Game getGame() { return game; }
 }

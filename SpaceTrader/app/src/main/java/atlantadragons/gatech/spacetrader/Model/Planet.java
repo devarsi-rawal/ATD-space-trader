@@ -5,8 +5,7 @@ public class Planet {
     private String name;
     private TechLevel techLevel;
     private PlanetResourceType resourceType;
-    private SolarSystem solarSystem;
-    //private Market market;
+    private Market market;
 
     public static final String[] planetNames =
             {
@@ -138,15 +137,27 @@ public class Planet {
                     "Zuul"			// From the first Ghostbusters movie
             };
 
-    public Planet(String name, TechLevel techLevel, PlanetResourceType resourceType, SolarSystem solarSystem) {
+    public Planet(String name, TechLevel techLevel, PlanetResourceType resourceType) {
         this.name = name;
         this.techLevel = techLevel;
         this.resourceType = resourceType;
-        this.solarSystem = solarSystem;
+        this.market = new Market(techLevel, resourceType);
+    }
+
+    public String getName() { return name; }
+
+    public void buyGood(Resource resource, int quantity) {
+        market.setQuantity(resource, market.getStockOf(resource) - quantity);
+    }
+
+    public void sellGood(Resource resource, int quantity) {
+        market.setQuantity(resource, market.getStockOf(resource) + quantity);
     }
 
     public String toString() {
         return String.format("Planet name: %s, Tech Level: %s, Resource Type: %s", name, techLevel.getLevelName(), resourceType.getName());
     }
+
+
 
 }

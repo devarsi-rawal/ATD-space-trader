@@ -4,43 +4,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static atlantadragons.gatech.spacetrader.Model.Planet.planetNames;
-import static atlantadragons.gatech.spacetrader.Model.SolarSystem.solarSystemNames;
 
 public class Game {
 
     private GameMode gameMode;
     private Player player;
-    public static List<SolarSystem> universe = new ArrayList<>();
-    private static Planet currentPlanet;
+    public Universe universe;
 
-    private static final int X_MAX = 150;
-    private static final int Y_MAX = 100;
+    private Planet currentPlanet;
 
-    private static int[][] gameBoard = new int[X_MAX][Y_MAX];
-
-    public static void createUniverse() {
-        for (int i = 0; i <= 10; i++) {
-            int xCoord = -1;
-            int yCoord = -1;
-            while (gameBoard[xCoord][yCoord] == 0) {
-                xCoord = (int) (Math.random() * X_MAX);
-                yCoord = (int) (Math.random() * Y_MAX);
-            }
-            gameBoard[xCoord][yCoord] = -1;
-            new SolarSystem("Name", xCoord, yCoord);
-            universe.add(new SolarSystem(solarSystemNames[i], xCoord, yCoord));
-            for (int j = 0; j < (int) (Math.random() * 5); i++) {
-                String name = planetNames[(int) (Math.random() * planetNames.length)];
-                TechLevel techLevel = TechLevel.randomTechLevel();
-                PlanetResourceType resourceType = PlanetResourceType.randomResourceType();
-                Planet planet = new Planet(name, techLevel, resourceType, universe.get(i));
-                universe.get(i).addPlanet(planet);
-            }
-
-        }
-        currentPlanet = universe.get(0).getPlanetList().get(0);
+    public Game (GameMode gameMode, Player player) {
+        this.gameMode = gameMode;
+        this.player = player;
+        universe = new Universe();
     }
 
-    public void setCurrentPlanet(Planet planet) { currentPlanet = planet; }
+    public Universe getUniverse() {
+        return universe;
+    }
 
+    public List<Integer> getStock() {
+        return player.
+    }
+
+    public String toString() {
+        String string = "";
+        string = player.toString() + "\n" +
+                "Difficulty: " + gameMode.toString() + "\n" +
+                universe.toString();
+        return string;
+    }
 }

@@ -38,6 +38,16 @@ public class Player {
     public void setTrader(int n) {this.trader = n;}
     public void setEngineer(int n) {this.engineer = n;}
 
+    public void buyGood (Resource resource, int quantity, double cost) {
+        credits -= cost;
+        spaceship.setCapacity(resource, spaceship.getStock(resource) + quantity);
+    }
+
+    public void sellGood (Resource resource, int quantity, double cost) {
+        credits += cost;
+        spaceship.setCapacity(resource, spaceship.getStock(resource) - quantity);
+    }
+
     public String toString() {
         return String.format("Player name: %s, " +
                 "pilotPoints: %d, " +

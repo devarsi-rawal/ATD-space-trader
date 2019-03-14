@@ -26,4 +26,5 @@ public enum SpaceshipType {
 
     public String getName() { return name; }
     public int getLevel() { return level; }
+    public int getCargoCapacity() { return cargoCapacity; }
 }
