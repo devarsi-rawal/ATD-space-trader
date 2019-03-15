@@ -31,6 +31,7 @@ public class Player {
     public int getFighter(){return fighter;}
     public int getTrader(){return trader;}
     public int getEngineer(){return engineer;}
+    public int getCredits(){return credits;}
 
     public void setName(String str) {this.name = str;}
     public void setPilot(int n) {this.pilot = n;}
@@ -38,14 +39,22 @@ public class Player {
     public void setTrader(int n) {this.trader = n;}
     public void setEngineer(int n) {this.engineer = n;}
 
+    public int getShipGoodsCount() {
+        return spaceship.getGoodsCount();
+    }
+
+    public int getShipCapacity() {
+        return spaceship.getCapacity();
+    }
+
     public void buyGood (Resource resource, int quantity, double cost) {
         credits -= cost;
-        spaceship.setCapacity(resource, spaceship.getStock(resource) + quantity);
+        spaceship.setStockOf(resource, spaceship.getStockOf(resource) + quantity);
     }
 
     public void sellGood (Resource resource, int quantity, double cost) {
         credits += cost;
-        spaceship.setCapacity(resource, spaceship.getStock(resource) - quantity);
+        spaceship.setStockOf(resource, spaceship.getStockOf(resource) - quantity);
     }
 
     public String toString() {

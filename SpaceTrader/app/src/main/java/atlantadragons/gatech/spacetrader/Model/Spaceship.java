@@ -23,14 +23,31 @@ public class Spaceship {
 
     public SpaceshipType getSpaceshipType() { return spaceshipType; }
 
+    public int getGoodsCount() {
+        int goodsCount = 0;
+        for (int i : cargoStock) {
+            goodsCount += i;
+        }
+        return goodsCount;
+    }
+
     public int getCapacity() { return capacity; }
 
-    public int getStock (Resource resource) {
+    public int getStockOf(Resource resource) {
         return cargoStock.get(resource.ordinal());
     }
 
-    public void setCapacity(Resource resource, int quantity) {
+    public void setStockOf(Resource resource, int quantity) {
         cargoStock.set(resource.ordinal(), quantity);
     }
+
+    public String toString() {
+        int goodsCount = 0;
+        for (int i : cargoStock) {
+            goodsCount += i;
+        }
+        return String.format("Ship Type: %s, Capacity: %d of %d", spaceshipType.getName(), goodsCount, capacity);
+    }
+
 
 }

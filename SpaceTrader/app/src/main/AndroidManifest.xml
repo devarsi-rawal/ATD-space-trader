@@ -16,12 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PlanetActivity">
-            <intent-filter>
-                <action android:name=".PlanetActivity"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
+        <activity android:name=".PlanetActivity"></activity>
+        <activity android:name=".MarketActivity"></activity>
     </application>
 
 </manifest>

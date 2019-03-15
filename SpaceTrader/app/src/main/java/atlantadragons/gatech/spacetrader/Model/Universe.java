@@ -23,12 +23,39 @@ public class Universe {
         currentSolarSystem = universe.get((int) (Math.random() * 9));
     }
 
-    public List<String> getNames() {
+    public List<String> getPlanetNames() {
         List<String> names = new ArrayList<>();
         for (SolarSystem s : universe) {
             names.add(s.getName());
         }
         return names;
+    }
+    public String getCurrentPlanetName() {
+        return currentSolarSystem.getName();
+    }
+
+    public int getxCoord() {
+        return currentSolarSystem.getxCoord();
+    }
+
+    public int getyCoord() {
+        return currentSolarSystem.getyCoord();
+    }
+
+    public TechLevel getTechLevel() {
+        return currentSolarSystem.getTechLevel();
+    }
+
+    public PlanetResourceType getResourceType() {
+        return currentSolarSystem.getResourceType();
+    }
+
+    public List<List<Double>> getMarketPrices() {
+        return currentSolarSystem.getMarketPrices();
+    }
+
+    public List<List<Integer>> getMarketStock() {
+        return currentSolarSystem.getMarketStock();
     }
 
     public void buyGood(Resource resource, int quantity) {

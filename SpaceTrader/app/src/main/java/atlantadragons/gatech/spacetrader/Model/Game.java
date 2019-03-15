@@ -23,8 +23,38 @@ public class Game {
         return universe;
     }
 
-    public List<Integer> getStock() {
-        return player.
+    public List<String> getPlanetNames() {
+        return universe.getPlanetNames();
+    }
+
+    public List<List<Double>> getMarketPrices() {
+        return universe.getMarketPrices();
+    }
+
+    public List<List<Integer>> getMarketStock() {
+        return universe.getMarketStock();
+    }
+
+    public void buyGood (Resource resource, int quantity, double cost) {
+        universe.buyGood(resource, quantity);
+        player.buyGood(resource, quantity, cost);
+    }
+
+    public void sellGood (Resource resource, int quantity, double cost) {
+        universe.sellGood(resource, quantity);
+        player.sellGood(resource, quantity, cost);
+    }
+
+    public int getCredits() {
+        return player.getCredits();
+    }
+
+    public int getShipGoodsCount() {
+        return player.getShipGoodsCount();
+    }
+
+    public int getShipCapacity() {
+        return player.getShipCapacity();
     }
 
     public String toString() {

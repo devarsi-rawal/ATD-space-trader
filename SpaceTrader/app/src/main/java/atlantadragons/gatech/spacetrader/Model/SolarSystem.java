@@ -23,7 +23,21 @@ public class SolarSystem {
         planetList.add(planet);
     }
 
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
+    public int getxCoord() {
+        return xCoord;
+    }
+    public int getyCoord() {
+        return yCoord;
+    }
+    public TechLevel getTechLevel() {
+        return planetList.get(0).getTechLevel();
+    }
+    public PlanetResourceType getResourceType() {
+        return planetList.get(0).getResourceType();
+    }
 
     public List<String> getPlanetNames() {
         List<String> names = new ArrayList<>();
@@ -31,6 +45,22 @@ public class SolarSystem {
             names.add(p.getName());
         }
         return names;
+    }
+
+    public List<List<Double>> getMarketPrices() {
+        List<List<Double>> list = new ArrayList<>();
+        for (Planet p : planetList) {
+            list.add(p.getMarketPrices());
+        }
+        return list;
+    }
+
+    public List<List<Integer>> getMarketStock() {
+        List<List<Integer>> list = new ArrayList<>();
+        for (Planet p : planetList) {
+            list.add(p.getMarketStock());
+        }
+        return list;
     }
 
     public void buyGood(Resource resource, int quantity) {

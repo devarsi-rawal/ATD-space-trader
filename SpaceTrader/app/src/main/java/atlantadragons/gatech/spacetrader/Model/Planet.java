@@ -1,5 +1,7 @@
 package atlantadragons.gatech.spacetrader.Model;
 
+import java.util.List;
+
 public class Planet {
 
     private String name;
@@ -145,13 +147,23 @@ public class Planet {
     }
 
     public String getName() { return name; }
+    public TechLevel getTechLevel() { return techLevel; }
+    public PlanetResourceType getResourceType() { return resourceType; }
+
+    public List<Double> getMarketPrices() {
+        return market.getPrices();
+    }
+
+    public List<Integer> getMarketStock() {
+        return market.getStock();
+    }
 
     public void buyGood(Resource resource, int quantity) {
-        market.setQuantity(resource, market.getStockOf(resource) - quantity);
+        market.setQuantityOf(resource, market.getStockOf(resource) - quantity);
     }
 
     public void sellGood(Resource resource, int quantity) {
-        market.setQuantity(resource, market.getStockOf(resource) + quantity);
+        market.setQuantityOf(resource, market.getStockOf(resource) + quantity);
     }
 
     public String toString() {

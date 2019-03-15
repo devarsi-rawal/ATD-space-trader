@@ -67,6 +67,7 @@ public class ConfigurationActivity extends AppCompatActivity {
 
         if (viewModel.setGame(name, pilot, fighter, trader, engineer, mode)) {
             startActivity(new Intent(ConfigurationActivity.this, PlanetActivity.class));
+            finish();
         } else {
             errorBox.setText("Error: Skill points must add up to exactly 16");
         }

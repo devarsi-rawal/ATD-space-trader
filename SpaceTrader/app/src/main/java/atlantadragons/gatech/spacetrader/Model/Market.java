@@ -27,7 +27,7 @@ public class Market {
         return stock.get(resource.ordinal());
     }
 
-    public void setQuantity(Resource resource, int quantity) {
+    public void setQuantityOf(Resource resource, int quantity) {
         stock.set(resource.ordinal(), quantity);
     }
 

@@ -7,13 +7,17 @@ import android.util.Log;
 
 import atlantadragons.gatech.spacetrader.Model.Game;
 import atlantadragons.gatech.spacetrader.Model.GameMode;
+import atlantadragons.gatech.spacetrader.Model.Interactor;
 import atlantadragons.gatech.spacetrader.Model.Player;
+import atlantadragons.gatech.spacetrader.Model.RepoHolder;
 
 public class ConfigurationViewModel extends AndroidViewModel {
     Player player;
     Game game;
+    private Interactor interactor;
     public ConfigurationViewModel(@NonNull Application application) {
         super(application);
+        interactor = RepoHolder.getHolder().getInteractor();
     }
 
     public boolean setGame(String name, int engineer, int fighter, int pilot, int trader, GameMode mode) {
@@ -27,6 +31,7 @@ public class ConfigurationViewModel extends AndroidViewModel {
             game = new Game (mode, player);
             Log.d("APP", "New Player created: " + player.toString());
             largeLog("APP", game.toString());
+            interactor.addGame(game);
             return true;
         }
 
