@@ -45,9 +45,11 @@ public class Game {
         player.sellGood(resource, quantity, cost);
     }
 
-    public int getCredits() {
+    public double getCredits() {
         return player.getCredits();
     }
+
+    public List<Integer> getCargoStock() {return player.getCargoStock(); }
 
     public int getShipGoodsCount() {
         return player.getShipGoodsCount();

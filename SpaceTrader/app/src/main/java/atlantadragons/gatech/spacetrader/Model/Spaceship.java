@@ -33,6 +33,8 @@ public class Spaceship {
 
     public int getCapacity() { return capacity; }
 
+    public List<Integer> getCargoStock() { return cargoStock; }
+
     public int getStockOf(Resource resource) {
         return cargoStock.get(resource.ordinal());
     }

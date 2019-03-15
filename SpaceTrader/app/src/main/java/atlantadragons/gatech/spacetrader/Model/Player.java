@@ -14,7 +14,7 @@ public class Player {
     private int engineer;
     private Spaceship spaceship;
 
-    private int credits;
+    private double credits;
 
     public Player(String name, int pilot, int fighter, int trader, int engineer) {
         this.name = name;
@@ -31,13 +31,17 @@ public class Player {
     public int getFighter(){return fighter;}
     public int getTrader(){return trader;}
     public int getEngineer(){return engineer;}
-    public int getCredits(){return credits;}
+    public double getCredits(){return credits;}
 
     public void setName(String str) {this.name = str;}
     public void setPilot(int n) {this.pilot = n;}
     public void setFighter(int n) {this.fighter = n;}
     public void setTrader(int n) {this.trader = n;}
     public void setEngineer(int n) {this.engineer = n;}
+
+    public List<Integer> getCargoStock() {
+        return spaceship.getCargoStock();
+    }
 
     public int getShipGoodsCount() {
         return spaceship.getGoodsCount();
@@ -63,7 +67,7 @@ public class Player {
                 "fighterPoints: %d, " +
                 "traderPoints: %d, " +
                 "engineerPoints: %d, " +
-                "credits: %d, " +
+                "credits: %.2f, " +
                 "spaceship: %s",
                 name, pilot, fighter, trader, engineer, credits, spaceship.getSpaceshipType().getName());
     }

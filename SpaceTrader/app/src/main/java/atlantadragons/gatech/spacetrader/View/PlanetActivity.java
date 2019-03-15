@@ -55,7 +55,7 @@ public class PlanetActivity extends AppCompatActivity {
         planetTextView.setText(viewModel.getPlanetName());
         techLevelTextView.setText(viewModel.getPlanetTechLevel());
         resourceTextView.setText(viewModel.getPlanetResourceType());
-        coordTextView.setText(viewModel.getCoordinates());
+        coordTextView.setText("Coordinates: " + viewModel.getCoordinates());
     }
 
 

@@ -34,9 +34,11 @@ public class Interactor {
         getCurrentGame().sellGood(resource, quantity, cost);
     }
 
-    public void getCredits() {
-        getCurrentGame().getCredits();
+    public double getCredits() {
+        return getCurrentGame().getCredits();
     }
+
+    public List<Integer> getCargoStock() { return getCurrentGame().getCargoStock(); }
 
     public int getShipGoodsCount() {
         return getCurrentGame().getShipGoodsCount();

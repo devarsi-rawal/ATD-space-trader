@@ -144,6 +144,7 @@ public class Planet {
         this.techLevel = techLevel;
         this.resourceType = resourceType;
         this.market = new Market(techLevel, resourceType);
+        calculateMarketPrices();
     }
 
     public String getName() { return name; }
@@ -168,6 +169,18 @@ public class Planet {
 
     public String toString() {
         return String.format("Planet name: %s, Tech Level: %s, Resource Type: %s", name, techLevel.getLevelName(), resourceType.getName());
+    }
+
+    public void calculateMarketPrices() {
+        for (int i = 0; i < market.getPrices().size(); i++) {
+            Resource resource = Resource.values()[i];
+            double price = market.getPriceOf(resource);
+            if (resourceType.getId() == resource.getDecreaseType()) {
+                market.getPrices().set(i, price * 3/4);
+            } else if (resourceType.getId() == resource.getIncreaseType()) {
+                market.getPrices().set(i, price * 5/4);
+            }
+        }
     }
 
 

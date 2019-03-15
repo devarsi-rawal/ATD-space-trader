@@ -20,9 +20,5 @@ public class MarketViewModel extends AndroidViewModel {
         interactor = RepoHolder.getHolder().getInteractor();
     }
 
-    public List<String> getResources() {
-        List<String> list = new ArrayList<>();
-        for (Resource r : Resource.values()) {
-        }
-    }
+
 }

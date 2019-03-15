@@ -16,8 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PlanetActivity"></activity>
-        <activity android:name=".MarketActivity"></activity>
+        <activity android:name=".PlanetActivity" />
+        <activity android:name=".MarketActivity" />
+        <activity android:name=".TradeActivity"></activity>
     </application>
 
 </manifest>
