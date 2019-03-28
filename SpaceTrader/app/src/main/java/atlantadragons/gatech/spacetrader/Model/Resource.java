@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public enum Resource {
-    WATER("Water", 80, 4, 3),
+    WATER("Water", 20, 4, 3),
     FUR("Fur", 250, 7, 8),
     FOOD("Food", 100, 5, 6),
     ORE("Ore", 350, 1, 2),
