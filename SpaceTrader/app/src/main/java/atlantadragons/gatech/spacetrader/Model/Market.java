@@ -6,8 +6,8 @@ import java.util.List;
 public class Market {
 
 
-    List<Integer> stock = new ArrayList<>();
-    List<Double> prices = new ArrayList<>();
+    private List<Integer> stock = new ArrayList<>();
+    private List<Double> prices = new ArrayList<>();
 
     public Market(TechLevel techLevel, PlanetResourceType resourceType) {
         for (Resource r : Resource.values()) {
