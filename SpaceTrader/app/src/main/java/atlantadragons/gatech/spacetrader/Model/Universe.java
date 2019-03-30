@@ -66,6 +66,10 @@ public class Universe {
         currentSolarSystem.sellGood(resource, quantity);
     }
 
+    public void setCurrentSolarSystem(SolarSystem solarSystem) {
+        currentSolarSystem = solarSystem;
+    }
+
     public String toString() {
         return universe.toString();
     }

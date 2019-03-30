@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".PlanetActivity" />
         <activity android:name=".MarketActivity" />
-        <activity android:name=".TradeActivity"></activity>
+        <activity android:name=".TradeActivity" />
+        <activity android:name=".TravelActivity"></activity>
     </application>
 
 </manifest>

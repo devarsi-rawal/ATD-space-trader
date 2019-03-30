@@ -21,6 +21,7 @@ public class PlanetActivity extends AppCompatActivity {
     private TextView resourceTextView;
     private TextView coordTextView;
     private Button marketButton;
+    private Button travelButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -18,6 +18,10 @@ public class Interactor {
         return repo.getCurrentGame();
     }
 
+    public void setCurrentSolarSystem(SolarSystem solarSystem) {
+        getCurrentGame().setCurrentPlanet(solarSystem);
+    }
+
     public List<List<Double>> getMarketPrices() {
         return getCurrentGame().getMarketPrices();
     }
@@ -46,6 +50,12 @@ public class Interactor {
 
     public int getShipCapacity() {
         return getCurrentGame().getShipCapacity();
+    }
+
+    public double getFuel() { return getCurrentGame().getFuel(); }
+
+    public void setFuel(double d) {
+        getCurrentGame().setFuel(d);
     }
 
     public Universe getUniverse() {
