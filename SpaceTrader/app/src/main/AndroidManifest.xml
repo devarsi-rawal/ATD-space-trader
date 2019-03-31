@@ -19,7 +19,8 @@
         <activity android:name=".PlanetActivity" />
         <activity android:name=".MarketActivity" />
         <activity android:name=".TradeActivity" />
-        <activity android:name=".TravelActivity"></activity>
+        <activity android:name=".TravelActivity">
+        </activity>
     </application>
 
 </manifest>

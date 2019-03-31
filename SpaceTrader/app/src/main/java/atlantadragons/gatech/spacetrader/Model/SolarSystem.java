@@ -10,7 +10,7 @@ public class SolarSystem {
     private int xCoord;
     private int yCoord;
 
-    private List<Planet> planetList = new ArrayList<>();
+    private ArrayList<Planet> planetList = new ArrayList<>();
 
     public SolarSystem(String name, int xCoord, int yCoord) {
         this.name = name;
@@ -38,7 +38,7 @@ public class SolarSystem {
     public PlanetResourceType getResourceType() {
         return planetList.get(0).getResourceType();
     }
-
+    public ArrayList<Planet> getPlanetList() {return planetList;}
     public List<String> getPlanetNames() {
         List<String> names = new ArrayList<>();
         for (Planet p : planetList) {

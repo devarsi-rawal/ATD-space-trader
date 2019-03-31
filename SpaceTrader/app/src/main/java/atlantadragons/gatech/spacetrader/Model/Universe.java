@@ -2,10 +2,11 @@ package atlantadragons.gatech.spacetrader.Model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Universe {
 
-    private List<SolarSystem> universe = new ArrayList<>();
+    private ArrayList<SolarSystem> universe = new ArrayList<>();
     private SolarSystem currentSolarSystem;
 
     public Universe() {
@@ -19,10 +20,11 @@ public class Universe {
         universe.add(new SolarSystem("Omega", 0, 0));
         universe.add(new SolarSystem("Utopia", 132, 62));
         universe.add(new SolarSystem("Zuul", 69, 69));
-
-        currentSolarSystem = universe.get((int) (Math.random() * 9));
+        Random rand = new Random();
+        currentSolarSystem = universe.get(rand.nextInt(10));
     }
 
+    public SolarSystem getCurrentSolarSystem() {return currentSolarSystem;}
     public List<String> getPlanetNames() {
         List<String> names = new ArrayList<>();
         for (SolarSystem s : universe) {
@@ -30,17 +32,19 @@ public class Universe {
         }
         return names;
     }
+
+    public ArrayList<SolarSystem> getUniverseList() {return universe;}
     public String getCurrentPlanetName() {
         return currentSolarSystem.getName();
     }
-
+    public void setCurrentSolarSystem(SolarSystem s) {
+        currentSolarSystem = s;
+    }
     public int getxCoord() {
         return currentSolarSystem.getxCoord();
     }
 
-    public int getyCoord() {
-        return currentSolarSystem.getyCoord();
-    }
+    public int getyCoord() { return currentSolarSystem.getyCoord(); }
 
     public TechLevel getTechLevel() {
         return currentSolarSystem.getTechLevel();
@@ -64,10 +68,6 @@ public class Universe {
 
     public void sellGood(Resource resource, int quantity) {
         currentSolarSystem.sellGood(resource, quantity);
-    }
-
-    public void setCurrentSolarSystem(SolarSystem solarSystem) {
-        currentSolarSystem = solarSystem;
     }
 
     public String toString() {

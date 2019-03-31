@@ -51,10 +51,10 @@ public class Player {
         return spaceship.getCapacity();
     }
 
-    public double getFuel() { return spaceship.getFuel(); }
+    public double getShipFuelRemaining() { return spaceship.getFuelRemaining(); }
 
-    public void setFuel(double d) {
-        spaceship.setFuel(d);
+    public void setShipFuelRemaining(double d) {
+        spaceship.setFuelRemaining(d);
     }
 
     public void buyGood (Resource resource, int quantity, double cost) {

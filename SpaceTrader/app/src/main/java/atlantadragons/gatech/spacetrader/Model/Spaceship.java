@@ -6,13 +6,15 @@ import java.util.List;
 public class Spaceship {
     private SpaceshipType spaceshipType;
     private int capacity;
-    private double fuel;
-    private List<Integer> cargoStock = new ArrayList<>();
+    private List<Integer> cargoStock;
+    private double fuelRemaining;
 
     public Spaceship(SpaceshipType spaceshipType) {
         this.spaceshipType = spaceshipType;
         capacity = spaceshipType.getCargoCapacity();
-        fuel = spaceshipType.getFuel();
+        cargoStock = new ArrayList<>();
+        fuelRemaining = 1000.0;
+
         for (Resource r : Resource.values()) {
             cargoStock.add(0);
         }
@@ -45,13 +47,10 @@ public class Spaceship {
         cargoStock.set(resource.ordinal(), quantity);
     }
 
-    public double getFuel() {
-        return fuel;
-    }
+    public double getFuelRemaining() { return fuelRemaining; }
 
-    public void setFuel(double d) {
-        fuel = d;
-    }
+    public void setFuelRemaining(double d) { fuelRemaining = d;}
+
 
     public String toString() {
         int goodsCount = 0;

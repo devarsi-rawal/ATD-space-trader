@@ -23,10 +23,6 @@ public class Game {
         return universe;
     }
 
-    public void setCurrentPlanet(SolarSystem solarSystem) {
-        universe.setCurrentSolarSystem(solarSystem);
-    }
-
     public List<String> getPlanetNames() {
         return universe.getPlanetNames();
     }
@@ -59,15 +55,14 @@ public class Game {
         return player.getShipGoodsCount();
     }
 
-    public int getShipCapacity() {
-        return player.getShipCapacity();
+    public int getShipCapacity() { return player.getShipCapacity(); }
+
+    public double getShipFuelRemaining() { return player.getShipFuelRemaining(); }
+
+    public void setShipFuelRemaining(double d) {
+        player.setShipFuelRemaining(d);
     }
 
-    public double getFuel() { return player.getFuel(); }
-
-    public void setFuel(double d) {
-        player.setFuel(d);
-    }
 
     public String toString() {
         String string = "";

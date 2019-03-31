@@ -20,8 +20,10 @@ public class PlanetActivity extends AppCompatActivity {
     private TextView techLevelTextView;
     private TextView resourceTextView;
     private TextView coordTextView;
+    private TextView fuelTextView;
     private Button marketButton;
     private Button travelButton;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,9 @@ public class PlanetActivity extends AppCompatActivity {
         resourceTextView = findViewById(R.id.resourceTextView);
         coordTextView = findViewById(R.id.coordTextView);
         marketButton = findViewById(R.id.marketButton);
+        fuelTextView = findViewById(R.id.fuelTextView);
+        travelButton = findViewById(R.id.travelButton);
+
 
         marketButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,20 +48,25 @@ public class PlanetActivity extends AppCompatActivity {
             }
         });
 
-//        planetTextView.setText(RepoHolder.getHolder().getInteractor().getUniverse().getPlanetNames().get(0));
-//        techLevelTextView.setText(RepoHolder.getHolder().getInteractor().getUniverse().getTechLevel().getLevelName());
-//        resourceTextView.setText(RepoHolder.getHolder().getInteractor().getUniverse().getResourceType().getName());
-//        coordTextView.setText(String.format("Coordinates: (%d, %d)",
-//                RepoHolder.getHolder().getInteractor().getUniverse().getyCoord(),
-//                RepoHolder.getHolder().getInteractor().getUniverse().getxCoord()));
+        travelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(PlanetActivity.this, TravelActivity.class));
+                finish();
+            }
+        });
 
         setTitle("Current Planet");
+        planetTextView.setText(String.format("Planet: (%s)", RepoHolder.getHolder().getInteractor().getUniverse().getCurrentPlanetName()));
+        techLevelTextView.setText(String.format("Tech Level: (%s)", RepoHolder.getHolder().getInteractor().getUniverse().getTechLevel().getLevelName()));
+        resourceTextView.setText(String.format("Resource: (%s)", RepoHolder.getHolder().getInteractor().getUniverse().getResourceType().getName()));
+        coordTextView.setText(String.format("Coordinates: (%d, %d)",
+                RepoHolder.getHolder().getInteractor().getUniverse().getxCoord(),
+                RepoHolder.getHolder().getInteractor().getUniverse().getyCoord()));
+        fuelTextView.setText(String.format("Fuel Remaining: %.2f", RepoHolder.getHolder().getInteractor().getShipFuelRemaining()));
+
         viewModel = ViewModelProviders.of(this).get(PlanetViewModel.class);
 
-        planetTextView.setText(viewModel.getPlanetName());
-        techLevelTextView.setText(viewModel.getPlanetTechLevel());
-        resourceTextView.setText(viewModel.getPlanetResourceType());
-        coordTextView.setText("Coordinates: " + viewModel.getCoordinates());
     }
 
 

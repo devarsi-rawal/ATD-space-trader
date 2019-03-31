@@ -14,7 +14,7 @@ import atlantadragons.gatech.spacetrader.ViewModel.MarketViewModel;
 
 public class MarketActivity extends AppCompatActivity {
 
-    private ListView marketList;;
+    private ListView marketList;
 
     private MarketViewModel viewModel;
 

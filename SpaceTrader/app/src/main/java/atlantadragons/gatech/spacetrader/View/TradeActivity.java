@@ -49,7 +49,7 @@ public class TradeActivity extends AppCompatActivity {
         viewModel = ViewModelProviders.of(this).get(TradeViewModel.class);
 
         resourceName.setText(resource.getName());
-        priceView.setText(String.format("Buy Price: %.2f\tSell Price: %.2f",
+        priceView.setText(String.format("Buy Price: %.2f\n\nSell Price: %.2f",
                 viewModel.getMarketPrices().get(resourceID),
                 viewModel.getMarketPrices().get(resourceID)/2
                 ));

@@ -8,8 +8,8 @@
     tools:showIn="@layout/activity_configuration">
 
     <LinearLayout
-        android:layout_width="395dp"
-        android:layout_height="712dp"
+        android:layout_width="380dp"
+        android:layout_height="650dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -22,7 +22,7 @@
 
         <EditText
             android:id="@+id/nameBox"
-            android:layout_width="361dp"
+            android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="75dp"
