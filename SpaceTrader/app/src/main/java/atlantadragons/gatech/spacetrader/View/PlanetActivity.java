@@ -3,9 +3,7 @@ package atlantadragons.gatech.spacetrader.View;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,7 +14,6 @@ import android.widget.Toast;
 
 import java.io.File;
 
-import atlantadragons.gatech.spacetrader.Model.Planet;
 import atlantadragons.gatech.spacetrader.Model.RepoHolder;
 import atlantadragons.gatech.spacetrader.ViewModel.PlanetViewModel;
 

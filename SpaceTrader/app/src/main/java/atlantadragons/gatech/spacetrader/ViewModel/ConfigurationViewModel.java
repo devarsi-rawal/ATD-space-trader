@@ -12,9 +12,9 @@ import atlantadragons.gatech.spacetrader.Model.Player;
 import atlantadragons.gatech.spacetrader.Model.RepoHolder;
 
 public class ConfigurationViewModel extends AndroidViewModel {
-    Player player;
-    Game game;
-    private Interactor interactor;
+    private Player player;
+    private Game game;
+    private final Interactor interactor;
     public ConfigurationViewModel(@NonNull Application application) {
         super(application);
         interactor = RepoHolder.getHolder().getInteractor();

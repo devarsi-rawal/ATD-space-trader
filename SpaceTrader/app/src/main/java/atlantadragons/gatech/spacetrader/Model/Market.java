@@ -3,7 +3,7 @@ package atlantadragons.gatech.spacetrader.Model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Market {
+class Market {
 
 
     private List<Integer> stock = new ArrayList<>();

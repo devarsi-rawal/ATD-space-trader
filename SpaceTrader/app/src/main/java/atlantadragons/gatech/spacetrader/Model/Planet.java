@@ -2,7 +2,7 @@ package atlantadragons.gatech.spacetrader.Model;
 
 import java.util.List;
 
-public class Planet {
+class Planet {
 
     private String name;
     private TechLevel techLevel;
@@ -171,7 +171,7 @@ public class Planet {
         return String.format("Planet name: %s, Tech Level: %s, Resource Type: %s", name, techLevel.getLevelName(), resourceType.getName());
     }
 
-    public void calculateMarketPrices() {
+    private void calculateMarketPrices() {
         for (int i = 0; i < market.getPrices().size(); i++) {
             Resource resource = Resource.values()[i];
             double price = market.getPriceOf(resource);

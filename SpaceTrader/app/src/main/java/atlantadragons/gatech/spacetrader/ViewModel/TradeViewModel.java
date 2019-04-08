@@ -9,7 +9,6 @@ import java.util.List;
 import atlantadragons.gatech.spacetrader.Model.Interactor;
 import atlantadragons.gatech.spacetrader.Model.RepoHolder;
 import atlantadragons.gatech.spacetrader.Model.Resource;
-import atlantadragons.gatech.spacetrader.View.TradeActivity;
 
 public class TradeViewModel extends AndroidViewModel {
 

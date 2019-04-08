@@ -4,20 +4,14 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import atlantadragons.gatech.spacetrader.Model.Interactor;
 import atlantadragons.gatech.spacetrader.Model.RepoHolder;
-import atlantadragons.gatech.spacetrader.Model.Resource;
 
 public class MarketViewModel extends AndroidViewModel {
 
-    private Interactor interactor;
-
     public MarketViewModel(@NonNull Application application) {
         super(application);
-        interactor = RepoHolder.getHolder().getInteractor();
+        Interactor interactor = RepoHolder.getHolder().getInteractor();
     }
 
 

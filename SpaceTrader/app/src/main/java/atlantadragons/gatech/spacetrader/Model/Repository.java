@@ -3,7 +3,7 @@ package atlantadragons.gatech.spacetrader.Model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Repository {
+class Repository {
 
     private Game currentGame;
 
