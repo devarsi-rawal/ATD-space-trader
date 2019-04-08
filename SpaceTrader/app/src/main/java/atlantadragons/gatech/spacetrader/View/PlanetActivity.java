@@ -5,10 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.File;
+
+import atlantadragons.gatech.spacetrader.Model.Planet;
 import atlantadragons.gatech.spacetrader.Model.RepoHolder;
 import atlantadragons.gatech.spacetrader.ViewModel.PlanetViewModel;
 
@@ -30,6 +38,7 @@ public class PlanetActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_planet);
+
 
         planetTextView = findViewById(R.id.planetTextView);
         techLevelTextView = findViewById(R.id.techLevelTextView);
@@ -70,5 +79,31 @@ public class PlanetActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.load_save_menu, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        RepoHolder rh = RepoHolder.getHolder();
+        File file;
+
+        switch (item.getItemId()) {
+            case R.id.saveItem:
+                file = new File(this.getFilesDir(), RepoHolder.DEFAULT_JSON_FILE_NAME);
+                Toast.makeText(this, "Saved Game", Toast.LENGTH_SHORT).show();
+                return rh.saveJson(file);
+            case R.id.loadItem:
+                file = new File(this.getFilesDir(), RepoHolder.DEFAULT_JSON_FILE_NAME);
+                rh.loadJson(file);
+                Toast.makeText(this, "Loaded Game", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(PlanetActivity.this, PlanetActivity.class));
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

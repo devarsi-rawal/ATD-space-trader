@@ -63,6 +63,13 @@ public class Game {
         player.setShipFuelRemaining(d);
     }
 
+    public void loseCredits(double d) {
+        player.setCredits(player.getCredits() - d);
+    }
+
+    public void earnCredits(double d) {
+        player.setCredits(player.getCredits() + d);
+    }
 
     public String toString() {
         String string = "";

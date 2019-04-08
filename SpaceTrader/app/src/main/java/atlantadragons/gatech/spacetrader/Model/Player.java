@@ -22,7 +22,7 @@ public class Player {
         this.fighter = fighter;
         this.trader = trader;
         this.engineer = engineer;
-        credits = 1000;
+        credits = 10000;
         spaceship = new Spaceship();
     }
 
@@ -55,6 +55,10 @@ public class Player {
 
     public void setShipFuelRemaining(double d) {
         spaceship.setFuelRemaining(d);
+    }
+
+    public void setCredits(double d) {
+        credits = d;
     }
 
     public void buyGood (Resource resource, int quantity, double cost) {

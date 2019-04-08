@@ -5,6 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -12,6 +16,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+
+import atlantadragons.gatech.spacetrader.Model.RepoHolder;
 import atlantadragons.gatech.spacetrader.Model.Resource;
 import atlantadragons.gatech.spacetrader.ViewModel.TradeViewModel;
 
@@ -32,6 +39,7 @@ public class TradeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trade);
+
 
         final int resourceID = getIntent().getIntExtra("RESOURCE_ID", 0);
         Resource resource = Resource.values()[resourceID];
@@ -86,6 +94,34 @@ public class TradeActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.load_save_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        RepoHolder rh = RepoHolder.getHolder();
+        File file;
+
+        switch (item.getItemId()) {
+            case R.id.saveItem:
+                file = new File(this.getFilesDir(), RepoHolder.DEFAULT_JSON_FILE_NAME);
+                Toast.makeText(this, "Saved Game", Toast.LENGTH_SHORT).show();
+                return rh.saveJson(file);
+            case R.id.loadItem:
+                file = new File(this.getFilesDir(), RepoHolder.DEFAULT_JSON_FILE_NAME);
+                rh.loadJson(file);
+                Toast.makeText(this, "Loaded Game", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(TradeActivity.this, PlanetActivity.class));
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

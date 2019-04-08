@@ -1,10 +1,16 @@
 package atlantadragons.gatech.spacetrader.View;
 
+import android.app.AlertDialog;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -15,8 +21,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import atlantadragons.gatech.spacetrader.Model.Planet;
 import atlantadragons.gatech.spacetrader.Model.RepoHolder;
@@ -54,9 +62,13 @@ public class TravelActivity extends AppCompatActivity {
         ArrayAdapter<SolarSystem> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, planets);
         planetList.setAdapter(arrayAdapter);
 
+        setTitle("Travel to Planet");
+        viewModel = ViewModelProviders.of(this).get(TravelViewModel.class);
+
         planetList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
                 SolarSystem temp = (SolarSystem) adapterView.getItemAtPosition(position);
 
                 int currX = RepoHolder.getHolder().getInteractor().getUniverse().getxCoord();
@@ -71,14 +83,47 @@ public class TravelActivity extends AppCompatActivity {
 
                 RepoHolder.getHolder().getInteractor().getUniverse().setCurrentSolarSystem(temp);
 
-                onBackPressed();
+                Random rand = new Random();
+
+                int randomInt = rand.nextInt(100);
+
+                System.out.println(randomInt);
+
+                if (randomInt >= 0 && randomInt < 10) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(TravelActivity.this);
+                    builder.setMessage("Oh no! Pirates attacked your ship and looted 100 credits!")
+                            .setCancelable(false)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    onBackPressed();
+                                }
+                            });
+                    viewModel.loseCredits(100);
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+                } else if (randomInt >= 10 && randomInt < 20) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(TravelActivity.this);
+                    builder.setMessage("Wow! You stumbled across an abandoned ship and found 100 credits!")
+                            .setCancelable(false)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    onBackPressed();
+                                }
+                            });
+                    viewModel.earnCredits(100);
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+                } else {
+                    onBackPressed();
+                }
             }
             });
 
 
 
-        setTitle("Travel to Planet");
-        viewModel = ViewModelProviders.of(this).get(TravelViewModel.class);
+
     }
 
     @Override
@@ -88,5 +133,32 @@ public class TravelActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.load_save_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        RepoHolder rh = RepoHolder.getHolder();
+        File file;
+
+        switch (item.getItemId()) {
+            case R.id.saveItem:
+                file = new File(this.getFilesDir(), RepoHolder.DEFAULT_JSON_FILE_NAME);
+                Toast.makeText(this, "Saved Game", Toast.LENGTH_SHORT).show();
+                return rh.saveJson(file);
+            case R.id.loadItem:
+                file = new File(this.getFilesDir(), RepoHolder.DEFAULT_JSON_FILE_NAME);
+                rh.loadJson(file);
+                Toast.makeText(this, "Loaded Game", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(TravelActivity.this, PlanetActivity.class));
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }
