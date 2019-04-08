@@ -41,7 +41,6 @@ public class TravelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel);
 
-
         planetList = findViewById(R.id.planetList);
         ArrayList<SolarSystem> planets = RepoHolder.getHolder().getInteractor().getUniverse().getUniverseList();
         for (int i = 0; i < planets.size(); i++) {

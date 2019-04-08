@@ -9,5 +9,4 @@
     <include
         layout="@layout/content_configuration"
         android:layout_height="65dp" />
-
 </android.support.design.widget.CoordinatorLayout>
