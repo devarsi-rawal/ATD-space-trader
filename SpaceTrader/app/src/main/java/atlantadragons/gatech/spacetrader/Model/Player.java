@@ -57,6 +57,10 @@ public class Player {
         spaceship.setFuelRemaining(d);
     }
 
+    public void setCredits(double d) {
+        credits = d;
+    }
+
     public void buyGood (Resource resource, int quantity, double cost) {
         credits -= cost;
         spaceship.setStockOf(resource, spaceship.getStockOf(resource) + quantity);

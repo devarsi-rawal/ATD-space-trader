@@ -1,7 +1,9 @@
 package atlantadragons.gatech.spacetrader.View;
 
+import android.app.AlertDialog;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ import android.widget.Toast;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import atlantadragons.gatech.spacetrader.Model.Planet;
 import atlantadragons.gatech.spacetrader.Model.RepoHolder;
@@ -59,9 +62,13 @@ public class TravelActivity extends AppCompatActivity {
         ArrayAdapter<SolarSystem> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, planets);
         planetList.setAdapter(arrayAdapter);
 
+        setTitle("Travel to Planet");
+        viewModel = ViewModelProviders.of(this).get(TravelViewModel.class);
+
         planetList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
                 SolarSystem temp = (SolarSystem) adapterView.getItemAtPosition(position);
 
                 int currX = RepoHolder.getHolder().getInteractor().getUniverse().getxCoord();
@@ -76,14 +83,47 @@ public class TravelActivity extends AppCompatActivity {
 
                 RepoHolder.getHolder().getInteractor().getUniverse().setCurrentSolarSystem(temp);
 
-                onBackPressed();
+                Random rand = new Random();
+
+                int randomInt = rand.nextInt(100);
+
+                System.out.println(randomInt);
+
+                if (randomInt >= 0 && randomInt < 10) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(TravelActivity.this);
+                    builder.setMessage("Oh no! Pirates attacked your ship and looted 100 credits!")
+                            .setCancelable(false)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    onBackPressed();
+                                }
+                            });
+                    viewModel.loseCredits(100);
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+                } else if (randomInt >= 10 && randomInt < 20) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(TravelActivity.this);
+                    builder.setMessage("Wow! You stumbled across an abandoned ship and found 100 credits!")
+                            .setCancelable(false)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    onBackPressed();
+                                }
+                            });
+                    viewModel.earnCredits(100);
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+                } else {
+                    onBackPressed();
+                }
             }
             });
 
 
 
-        setTitle("Travel to Planet");
-        viewModel = ViewModelProviders.of(this).get(TravelViewModel.class);
+
     }
 
     @Override

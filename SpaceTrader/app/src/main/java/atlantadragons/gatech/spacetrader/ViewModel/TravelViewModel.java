@@ -19,4 +19,12 @@ public class TravelViewModel extends AndroidViewModel {
         super(application);
         interactor = RepoHolder.getHolder().getInteractor();
     }
+
+    public void loseCredits(double d) {
+        interactor.loseCredits(d);
+    }
+
+    public void earnCredits(double d) {
+        interactor.earnCredits(d);
+    }
 }

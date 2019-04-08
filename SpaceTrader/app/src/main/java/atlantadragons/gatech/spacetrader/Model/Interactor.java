@@ -38,6 +38,14 @@ public class Interactor {
         return getCurrentGame().getCredits();
     }
 
+    public void loseCredits(double d) {
+        getCurrentGame().loseCredits(d);
+    }
+
+    public void earnCredits(double d) {
+        getCurrentGame().earnCredits(d);
+    }
+
     public List<Integer> getCargoStock() { return getCurrentGame().getCargoStock(); }
 
     public int getShipGoodsCount() {
