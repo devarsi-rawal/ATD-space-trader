@@ -44,6 +44,8 @@ public class RepoHolder {
 
             repo = gson.fromJson(inString, Repository.class);
 
+            interactor = new Interactor(repo);
+
             input.close();
         } catch (IOException e) {
             Log.e("RepoHolder", "Failed to open/read the buffered reader for json");
