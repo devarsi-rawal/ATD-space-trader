@@ -25,7 +25,7 @@ public class RepoHolder {
         createInteractor();
     }
 
-    public void createInteractor() {
+    private void createInteractor() {
         interactor = new Interactor(repo);
     }
 

@@ -1,15 +1,14 @@
 package atlantadragons.gatech.spacetrader.Model;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static atlantadragons.gatech.spacetrader.Model.Planet.planetNames;
+
 
 public class Game {
 
-    private GameMode gameMode;
-    private Player player;
-    public Universe universe;
+    private final GameMode gameMode;
+    private final Player player;
+    private final Universe universe;
 
     private Planet currentPlanet;
 

@@ -14,7 +14,7 @@ public class Interactor {
         repo.addGame(game);
     }
 
-    public Game getCurrentGame() {
+    private Game getCurrentGame() {
         return repo.getCurrentGame();
     }
 

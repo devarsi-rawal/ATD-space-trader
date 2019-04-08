@@ -1,7 +1,5 @@
 package atlantadragons.gatech.spacetrader.Model;
 
-import android.widget.Space;
-
 public enum SpaceshipType {
     GNAT("Gnat", 0, 100),
     FLEA("Flea", 1, 100),
@@ -12,7 +10,7 @@ public enum SpaceshipType {
     HORNET("Hornet", 6, 100),
     GRASSHOPPER("Grasshopper", 7, 100),
     TERMITE("Termite", 8, 100),
-    WASP("Wasp", 9, 100);
+    WASP("Wasp", 9, 200);
 
     private String name;
     private int level;

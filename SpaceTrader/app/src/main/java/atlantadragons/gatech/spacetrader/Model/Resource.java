@@ -1,9 +1,5 @@
 package atlantadragons.gatech.spacetrader.Model;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
-
 public enum Resource {
     WATER("Water", 80, 4, 3),
     FUR("Fur", 250, 7, 8),

@@ -4,12 +4,8 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
-import java.util.List;
-
 import atlantadragons.gatech.spacetrader.Model.Interactor;
 import atlantadragons.gatech.spacetrader.Model.RepoHolder;
-import atlantadragons.gatech.spacetrader.Model.Resource;
-import atlantadragons.gatech.spacetrader.View.TravelActivity;
 
 public class TravelViewModel extends AndroidViewModel {
 

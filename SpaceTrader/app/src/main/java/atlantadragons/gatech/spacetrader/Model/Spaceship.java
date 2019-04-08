@@ -3,13 +3,13 @@ package atlantadragons.gatech.spacetrader.Model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Spaceship {
+class Spaceship {
     private SpaceshipType spaceshipType;
     private int capacity;
     private List<Integer> cargoStock;
     private double fuelRemaining;
 
-    public Spaceship(SpaceshipType spaceshipType) {
+    private Spaceship(SpaceshipType spaceshipType) {
         this.spaceshipType = spaceshipType;
         capacity = spaceshipType.getCargoCapacity();
         cargoStock = new ArrayList<>();

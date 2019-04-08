@@ -3,7 +3,6 @@ package atlantadragons.gatech.spacetrader.View;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,12 +16,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
-import java.util.ArrayList;
 
 import atlantadragons.gatech.spacetrader.Model.GameMode;
 import atlantadragons.gatech.spacetrader.Model.RepoHolder;
 import atlantadragons.gatech.spacetrader.ViewModel.ConfigurationViewModel;
-import atlantadragons.gatech.spacetrader.Model.Player;
 
 
 public class ConfigurationActivity extends AppCompatActivity {
@@ -54,7 +51,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         Button button = findViewById(R.id.newPlayerButton);
         errorBox = findViewById(R.id.errorBox);
 
-        ArrayAdapter<GameMode> adapter = new ArrayAdapter<GameMode>(this, android.R.layout.simple_spinner_item, GameMode.values());
+        ArrayAdapter<GameMode> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, GameMode.values());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         modeSpinner.setAdapter(adapter);
 
@@ -63,7 +60,7 @@ public class ConfigurationActivity extends AppCompatActivity {
     }
 
     public void onSubmit(View view) {
-        //create new player with attibutes and send to viewmodel
+        //create new player with attributes and send to viewmodel
         String name = nameField.getText().toString();
         int pilot = Integer.parseInt(pilotField.getText().toString());
         int fighter = Integer.parseInt(fighterField.getText().toString());

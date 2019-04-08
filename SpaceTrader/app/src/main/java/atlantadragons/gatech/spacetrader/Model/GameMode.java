@@ -7,7 +7,7 @@ public enum GameMode {
     HARD("Hard"),
     IMPOSSIBLE("Impossible");
 
-    private String mode;
+    private final String mode;
 
     GameMode(String mode) {
         this.mode = mode;
