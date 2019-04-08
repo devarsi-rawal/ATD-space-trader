@@ -23,7 +23,7 @@ public class TradeViewModel extends AndroidViewModel {
         double money = interactor.getCredits();
         int capacity = interactor.getShipCapacity();
         int goodsCount = interactor.getShipGoodsCount();
-        if (cost * quantity <= money && goodsCount + quantity <= capacity) {
+        if (((cost * quantity) <= money) && ((goodsCount + quantity) <= capacity)) {
             interactor.buyGood(Resource.values()[resourceID], quantity, cost * quantity);
             return true;
         }
@@ -32,8 +32,8 @@ public class TradeViewModel extends AndroidViewModel {
 
     public boolean sellGood(int resourceID, int quantity, double cost) {
         int resourceStock = interactor.getCargoStock().get(resourceID);
-        if (resourceStock - quantity >= 0) {
-            interactor.sellGood(Resource.values()[resourceID], quantity, cost/2 * quantity);
+        if ((resourceStock - quantity) >= 0) {
+            interactor.sellGood(Resource.values()[resourceID], quantity, (cost / 2) * quantity);
             return true;
         }
         return false;

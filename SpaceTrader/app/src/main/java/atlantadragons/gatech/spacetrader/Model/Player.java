@@ -76,7 +76,8 @@ public class Player {
                 "engineerPoints: %d, " +
                 "credits: %.2f, " +
                 "spaceship: %s",
-                name, pilot, fighter, trader, engineer, credits, spaceship.getSpaceshipType().getName());
+                name, pilot, fighter, trader, engineer, credits,
+                spaceship.getSpaceshipType().getName());
     }
 
 

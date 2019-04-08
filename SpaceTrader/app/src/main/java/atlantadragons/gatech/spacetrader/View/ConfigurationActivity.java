@@ -51,7 +51,8 @@ public class ConfigurationActivity extends AppCompatActivity {
         Button button = findViewById(R.id.newPlayerButton);
         errorBox = findViewById(R.id.errorBox);
 
-        ArrayAdapter<GameMode> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, GameMode.values());
+        ArrayAdapter<GameMode> adapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_spinner_item, GameMode.values());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         modeSpinner.setAdapter(adapter);
 

@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -21,19 +22,16 @@ import atlantadragons.gatech.spacetrader.ViewModel.MarketViewModel;
 
 public class MarketActivity extends AppCompatActivity {
 
-    private ListView marketList;
-
-    private MarketViewModel viewModel;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market);
 
 
-        marketList = findViewById(R.id.marketList);
+        ListView marketList = findViewById(R.id.marketList);
 
-        ArrayAdapter<Resource> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Resource.values());
+        ListAdapter arrayAdapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_list_item_1, Resource.values());
         marketList.setAdapter(arrayAdapter);
 
         marketList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -47,7 +45,7 @@ public class MarketActivity extends AppCompatActivity {
         });
 
         setTitle("Market");
-        viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
+        MarketViewModel viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
 
 
     }

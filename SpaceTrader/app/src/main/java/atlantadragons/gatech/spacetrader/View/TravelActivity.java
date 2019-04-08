@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,7 +26,6 @@ import atlantadragons.gatech.spacetrader.ViewModel.TravelViewModel;
 
 public class TravelActivity extends AppCompatActivity {
 
-    private ListView planetList;
     private TravelViewModel viewModel;
 
     @Override
@@ -33,8 +33,9 @@ public class TravelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel);
 
-        planetList = findViewById(R.id.planetList);
-        ArrayList<SolarSystem> planets = RepoHolder.getHolder().getInteractor().getUniverse().getUniverseList();
+        ListView planetList = findViewById(R.id.planetList);
+        ArrayList<SolarSystem> planets =
+                RepoHolder.getHolder().getInteractor().getUniverse().getUniverseList();
         for (int i = 0; i < planets.size(); i++) {
             SolarSystem planet = planets.get(i);
             int currX = RepoHolder.getHolder().getInteractor().getUniverse().getxCoord();
@@ -42,13 +43,16 @@ public class TravelActivity extends AppCompatActivity {
             int nextX = planet.getxCoord();
             int nextY = planet.getyCoord();
             double currFuel = RepoHolder.getHolder().getInteractor().getShipFuelRemaining();
-            double distance = Math.sqrt( Math.pow((nextX - currX), 2) + Math.pow((nextY - currY), 2) );
+            double distance = Math.sqrt(Math.pow((nextX - currX), 2) +
+                    Math.pow((nextY - currY), 2));
 
-            if (distance > currFuel)
-                    planets.remove(planet);
+            if (distance > currFuel) {
+                planets.remove(planet);
+            }
 
         }
-        ArrayAdapter<SolarSystem> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, planets);
+        ListAdapter arrayAdapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_list_item_1, planets);
         planetList.setAdapter(arrayAdapter);
 
         setTitle("Travel to Planet");
@@ -66,7 +70,8 @@ public class TravelActivity extends AppCompatActivity {
                 int nextY = temp.getyCoord();
 
                 double currFuel = RepoHolder.getHolder().getInteractor().getShipFuelRemaining();
-                double distance = Math.sqrt( Math.pow((nextX - currX), 2) + Math.pow((nextY - currY), 2) );
+                double distance = Math.sqrt( Math.pow((nextX - currX), 2) +
+                        Math.pow((nextY - currY), 2));
 
                 RepoHolder.getHolder().getInteractor().setShipFuelRemaining((currFuel - distance));
 
@@ -76,10 +81,10 @@ public class TravelActivity extends AppCompatActivity {
 
                 int randomInt = rand.nextInt(100);
 
-                System.out.println(randomInt);
 
-                if (randomInt >= 0 && randomInt < 10) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(TravelActivity.this);
+                if ((randomInt >= 0) && (randomInt < 10)) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(
+                            TravelActivity.this);
                     builder.setMessage("Oh no! Pirates attacked your ship and looted 100 credits!")
                             .setCancelable(false)
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -91,9 +96,10 @@ public class TravelActivity extends AppCompatActivity {
                     viewModel.loseCredits(100);
                     AlertDialog alertDialog = builder.create();
                     alertDialog.show();
-                } else if (randomInt >= 10 && randomInt < 20) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(TravelActivity.this);
-                    builder.setMessage("Wow! You stumbled across an abandoned ship and found 100 credits!")
+                } else if ((randomInt >= 10) && (randomInt < 20)) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(
+                            TravelActivity.this);
+                    builder.setMessage("Wow! You found an abandoned ship and found 100 credits!")
                             .setCancelable(false)
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override

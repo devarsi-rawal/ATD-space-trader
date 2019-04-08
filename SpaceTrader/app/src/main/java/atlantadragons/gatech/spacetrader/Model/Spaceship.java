@@ -57,7 +57,8 @@ class Spaceship {
         for (int i : cargoStock) {
             goodsCount += i;
         }
-        return String.format("Ship Type: %s, Capacity: %d of %d", spaceshipType.getName(), goodsCount, capacity);
+        return String.format("Ship Type: %s, Capacity: %d of %d",
+                spaceshipType.getName(), goodsCount, capacity);
     }
 
 

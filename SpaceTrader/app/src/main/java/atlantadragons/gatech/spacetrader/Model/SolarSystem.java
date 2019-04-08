@@ -16,7 +16,8 @@ public class SolarSystem {
         this.name = name;
         this.xCoord = xCoord;
         this.yCoord = yCoord;
-        planetList.add(new Planet(name, TechLevel.randomTechLevel(), PlanetResourceType.randomResourceType()));
+        planetList.add(new Planet(name, TechLevel.randomTechLevel(),
+                PlanetResourceType.randomResourceType()));
     }
 
     public void addPlanet(Planet planet) {
@@ -72,6 +73,7 @@ public class SolarSystem {
     }
 
     public String toString() {
-        return String.format("Solar System: %s @ coordinates: (%d, %d) with planets: %s", name, xCoord, yCoord, planetList.toString());
+        return String.format("Solar System: %s @ coordinates: (%d, %d) with planets: %s",
+                name, xCoord, yCoord, planetList.toString());
     }
 }

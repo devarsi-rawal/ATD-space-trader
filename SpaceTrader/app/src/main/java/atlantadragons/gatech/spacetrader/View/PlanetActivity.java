@@ -1,5 +1,6 @@
 package atlantadragons.gatech.spacetrader.View;
 
+import android.annotation.SuppressLint;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,17 +20,10 @@ import atlantadragons.gatech.spacetrader.ViewModel.PlanetViewModel;
 
 public class PlanetActivity extends AppCompatActivity {
 
-    private PlanetViewModel viewModel;
-
-    private TextView planetTextView;
     private TextView techLevelTextView;
-    private TextView resourceTextView;
-    private TextView coordTextView;
-    private TextView fuelTextView;
-    private Button marketButton;
-    private Button travelButton;
 
 
+    @SuppressLint("DefaultLocale")
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -37,13 +31,13 @@ public class PlanetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_current_planet);
 
 
-        planetTextView = findViewById(R.id.planetTextView);
+        TextView planetTextView = findViewById(R.id.planetTextView);
         techLevelTextView = findViewById(R.id.techLevelTextView);
-        resourceTextView = findViewById(R.id.resourceTextView);
-        coordTextView = findViewById(R.id.coordTextView);
-        marketButton = findViewById(R.id.marketButton);
-        fuelTextView = findViewById(R.id.fuelTextView);
-        travelButton = findViewById(R.id.travelButton);
+        TextView resourceTextView = findViewById(R.id.resourceTextView);
+        TextView coordTextView = findViewById(R.id.coordTextView);
+        Button marketButton = findViewById(R.id.marketButton);
+        TextView fuelTextView = findViewById(R.id.fuelTextView);
+        Button travelButton = findViewById(R.id.travelButton);
 
 
         marketButton.setOnClickListener(new View.OnClickListener() {
@@ -63,15 +57,20 @@ public class PlanetActivity extends AppCompatActivity {
         });
 
         setTitle("Current Planet");
-        planetTextView.setText(String.format("Planet: (%s)", RepoHolder.getHolder().getInteractor().getUniverse().getCurrentPlanetName()));
-        techLevelTextView.setText(String.format("Tech Level: (%s)", RepoHolder.getHolder().getInteractor().getUniverse().getTechLevel().getLevelName()));
-        resourceTextView.setText(String.format("Resource: (%s)", RepoHolder.getHolder().getInteractor().getUniverse().getResourceType().getName()));
+        planetTextView.setText(String.format("Planet: (%s)",
+                RepoHolder.getHolder().getInteractor().getUniverse().getCurrentPlanetName()));
+        techLevelTextView.setText(String.format("Tech Level: (%s)",
+                RepoHolder.getHolder().getInteractor()
+                        .getUniverse().getTechLevel().getLevelName()));
+        resourceTextView.setText(String.format("Resource: (%s)",
+                RepoHolder.getHolder().getInteractor().getUniverse().getResourceType().getName()));
         coordTextView.setText(String.format("Coordinates: (%d, %d)",
                 RepoHolder.getHolder().getInteractor().getUniverse().getxCoord(),
                 RepoHolder.getHolder().getInteractor().getUniverse().getyCoord()));
-        fuelTextView.setText(String.format("Fuel Remaining: %.2f", RepoHolder.getHolder().getInteractor().getShipFuelRemaining()));
+        fuelTextView.setText(String.format("Fuel Remaining: %.2f",
+                RepoHolder.getHolder().getInteractor().getShipFuelRemaining()));
 
-        viewModel = ViewModelProviders.of(this).get(PlanetViewModel.class);
+        PlanetViewModel viewModel = ViewModelProviders.of(this).get(PlanetViewModel.class);
 
     }
 

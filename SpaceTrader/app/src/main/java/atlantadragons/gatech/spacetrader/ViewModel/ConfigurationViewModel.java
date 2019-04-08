@@ -20,7 +20,8 @@ public class ConfigurationViewModel extends AndroidViewModel {
         interactor = RepoHolder.getHolder().getInteractor();
     }
 
-    public boolean setGame(String name, int engineer, int fighter, int pilot, int trader, GameMode mode) {
+    public boolean setGame(
+            String name, int engineer, int fighter, int pilot, int trader, GameMode mode) {
         //check if input is good
         int total = engineer + fighter + pilot + trader;
 

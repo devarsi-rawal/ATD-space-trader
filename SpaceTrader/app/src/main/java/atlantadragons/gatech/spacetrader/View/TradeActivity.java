@@ -25,14 +25,10 @@ public class TradeActivity extends AppCompatActivity {
 
     private TradeViewModel viewModel;
 
-    private TextView resourceName;
     private TextView creditsView;
-    private TextView priceView;
     private TextView cargoStockView;
     private TextView inStockView;
     private EditText input;
-    private Button buyButton;
-    private Button sellButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +39,14 @@ public class TradeActivity extends AppCompatActivity {
         final int resourceID = getIntent().getIntExtra("RESOURCE_ID", 0);
         Resource resource = Resource.values()[resourceID];
 
-        resourceName = findViewById(R.id.resourceName);
+        TextView resourceName = findViewById(R.id.resourceName);
         creditsView = findViewById(R.id.creditsView);
-        priceView =  findViewById(R.id.priceView);
+        TextView priceView = findViewById(R.id.priceView);
         cargoStockView = findViewById(R.id.cargoStockView);
         inStockView  =findViewById(R.id.inStockView);
         input = findViewById(R.id.quantityInput);
-        buyButton = findViewById(R.id.buyButton);
-        sellButton = findViewById(R.id.sellButton);
+        Button buyButton = findViewById(R.id.buyButton);
+        Button sellButton = findViewById(R.id.sellButton);
 
         setTitle("Trade Resource");
         viewModel = ViewModelProviders.of(this).get(TradeViewModel.class);
@@ -61,20 +57,26 @@ public class TradeActivity extends AppCompatActivity {
                 viewModel.getMarketPrices().get(resourceID)/2
                 ));
         creditsView.setText(String.format("Credits: %.2f", viewModel.getCredits()));
-        cargoStockView.setText(String.format("You have: %d units (%d Total)", viewModel.getCargoStock().get(resourceID), viewModel.getGoodsCount()));
-        inStockView.setText(String.format("In Stock: %d units", viewModel.getMarketStock().get(resourceID)));
+        cargoStockView.setText(String.format("You have: %d units (%d Total)",
+                viewModel.getCargoStock().get(resourceID), viewModel.getGoodsCount()));
+        inStockView.setText(String.format("In Stock: %d units",
+                viewModel.getMarketStock().get(resourceID)));
 
         buyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int quantity = Integer.parseInt(input.getText().toString());
-                if (viewModel.buyGood(resourceID, quantity, viewModel.getMarketPrices().get(resourceID))) {
+                if (viewModel.buyGood(resourceID, quantity,
+                        viewModel.getMarketPrices().get(resourceID))) {
                     closeKeyboard();
                     creditsView.setText(String.format("Credits: %.2f", viewModel.getCredits()));
-                    cargoStockView.setText(String.format("You have: %d units (%d Total)", viewModel.getCargoStock().get(resourceID), viewModel.getGoodsCount()));
-                    inStockView.setText(String.format("In Stock: %d units", viewModel.getMarketStock().get(resourceID)));
+                    cargoStockView.setText(String.format("You have: %d units (%d Total)",
+                            viewModel.getCargoStock().get(resourceID), viewModel.getGoodsCount()));
+                    inStockView.setText(String.format("In Stock: %d units",
+                            viewModel.getMarketStock().get(resourceID)));
                 } else {
-                    Toast.makeText(getBaseContext(), "Please review transaction decision", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), "Please review transaction decision",
+                            Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -84,12 +86,16 @@ public class TradeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 closeKeyboard();
                 int quantity = Integer.parseInt(input.getText().toString());
-                if (viewModel.sellGood(resourceID, quantity, viewModel.getMarketPrices().get(resourceID))) {
+                if (viewModel.sellGood(resourceID, quantity,
+                        viewModel.getMarketPrices().get(resourceID))) {
                     creditsView.setText(String.format("Credits: %.2f", viewModel.getCredits()));
-                    cargoStockView.setText(String.format("You have: %d units (%d Total)", viewModel.getCargoStock().get(resourceID), viewModel.getGoodsCount()));
-                    inStockView.setText(String.format("In Stock: %d units", viewModel.getMarketStock().get(resourceID)));
+                    cargoStockView.setText(String.format("You have: %d units (%d Total)",
+                            viewModel.getCargoStock().get(resourceID), viewModel.getGoodsCount()));
+                    inStockView.setText(String.format("In Stock: %d units",
+                            viewModel.getMarketStock().get(resourceID)));
                 } else {
-                    Toast.makeText(getBaseContext(), "Please review transaction decision", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), "Please review transaction decision",
+                            Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -133,7 +139,8 @@ public class TradeActivity extends AppCompatActivity {
     private void closeKeyboard() {
         View view = this.getCurrentFocus();
         if (view != null) {
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager) getSystemService(
+                    Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }

@@ -12,7 +12,7 @@ class Planet {
     public static final String[] planetNames =
             {
                     "Acamar",
-                    "Adahn",		// The alternate personality for The Nameless One in "Planescape: Torment"
+                    "Adahn",
                     "Aldea",
                     "Andevian",
                     "Antedi",
@@ -168,7 +168,8 @@ class Planet {
     }
 
     public String toString() {
-        return String.format("Planet name: %s, Tech Level: %s, Resource Type: %s", name, techLevel.getLevelName(), resourceType.getName());
+        return String.format("Planet name: %s, Tech Level: %s, Resource Type: %s",
+                name, techLevel.getLevelName(), resourceType.getName());
     }
 
     private void calculateMarketPrices() {
@@ -176,9 +177,9 @@ class Planet {
             Resource resource = Resource.values()[i];
             double price = market.getPriceOf(resource);
             if (resourceType.getId() == resource.getDecreaseType()) {
-                market.getPrices().set(i, price * 3/4);
+                market.getPrices().set(i, (price * 3) / 4);
             } else if (resourceType.getId() == resource.getIncreaseType()) {
-                market.getPrices().set(i, price * 5/4);
+                market.getPrices().set(i, (price * 5) / 4);
             }
         }
     }
